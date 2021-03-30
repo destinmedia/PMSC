@@ -10,5 +10,7 @@ $url = $_GET['url'];
 $xml = simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
 $products = json_decode($json,TRUE);
-
+echo "<pre>";
+print_r($products);
+echo "</pre>";
 ?>
