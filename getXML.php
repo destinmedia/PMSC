@@ -12,6 +12,6 @@ $xml = simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
 $products = json_decode($json,TRUE);
 echo "<pre>";
-print_r(array_keys($products['post']));
+print_r(array_keys($products['post'][0]));
 echo "</pre>";
 ?>
