@@ -6,7 +6,8 @@
  * @date     29/13/2021
 **/
 
-$url = $_GET['url'];
+$url = htmlspecialchars($_GET['url']);
+echo $url;
 $xml = simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
 $products = json_decode($json,TRUE);
