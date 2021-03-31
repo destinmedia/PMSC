@@ -16,7 +16,7 @@ print_r(array_keys($products['post'][0]));
 echo "</pre>";
 
 $columns = implode(", ",array_keys($products['post'][0]));
-$escaped_values = array_map('mysql_real_escape_string', array_values($products['post'][0]));
+$escaped_values = array_map( array_values($products['post'][0]));
 echo "<br> $values";
 $values  = implode(", ", $escaped_values);
 $sql = "INSERT INTO `xml_alterego`($columns) VALUES ($values)";
