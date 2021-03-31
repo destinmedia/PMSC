@@ -16,10 +16,23 @@ print_r(array_keys($products['post'][0]));
 echo "</pre>";
 
 $columns = implode(", ",array_keys($products['post'][0]));
-$escaped_values = array_map( array_values($products['post'][0]));
-echo "<br> $values";
+$escaped_values = array_map( array_values($products['post']));
 $values  = implode(", ", $escaped_values);
 $sql = "INSERT INTO `xml_alterego`($columns) VALUES ($values)";
 
 echo "<br>" . $sql;
+
+function array2csv($data, $delimiter = ',', $enclosure = '"', $escape_char = "\\")
+{
+    $f = fopen('php://memory', 'r+');
+    foreach ($data as $item) {
+        fputcsv($f, $item, $delimiter, $enclosure, $escape_char);
+    }
+    rewind($f);
+    return stream_get_contents($f);
+}
+
+$list = $products;
+var_dump(array2csv($list));
+
 ?>
