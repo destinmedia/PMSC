@@ -12,39 +12,7 @@ $xml = simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
 $products = json_decode($json,TRUE);
 echo "<pre>";
-print_r(array_keys($products['post'][0]));
+print_r($products);
 echo "</pre>";
-function createCsv($xml,$f)
-{
-
-    foreach ($xml->children() as $item)
-    {
-
-       $hasChild = (count($item->children()) > 0)?true:false;
-
-    if( ! $hasChild)
-    {
-       $put_arr = array($item->getName(),$item);
-       fputcsv($f, $put_arr ,',','"');
-
-    }
-    else
-    {
-     createCsv($item, $f);
-    }
- }
-
-}
-$filexml=$url;
-
-    if (file_exists($filexml))
-           {
-       $xml = simplexml_load_file($filexml);
-       $f = fopen('test.csv', 'w');
-       createCsv($xml, $f);
-       fclose($f);
-    }
-
-
 
 ?>
