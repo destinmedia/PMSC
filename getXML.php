@@ -14,7 +14,27 @@ $products = json_decode($json,TRUE);
 echo "<pre>";
 print_r(array_keys($products['post'][0]));
 echo "</pre>";
+function createCsv($xml,$f)
+{
 
+    foreach ($xml->children() as $item)
+    {
+
+       $hasChild = (count($item->children()) > 0)?true:false;
+
+    if( ! $hasChild)
+    {
+       $put_arr = array($item->getName(),$item);
+       fputcsv($f, $put_arr ,',','"');
+
+    }
+    else
+    {
+     createCsv($item, $f);
+    }
+ }
+
+}
 $filexml=$url;
 
     if (file_exists($filexml))
@@ -25,26 +45,6 @@ $filexml=$url;
        fclose($f);
     }
 
-    function createCsv($xml,$f)
-    {
 
-        foreach ($xml->children() as $item)
-        {
-
-           $hasChild = (count($item->children()) > 0)?true:false;
-
-        if( ! $hasChild)
-        {
-           $put_arr = array($item->getName(),$item);
-           fputcsv($f, $put_arr ,',','"');
-
-        }
-        else
-        {
-         createCsv($item, $f);
-        }
-     }
-
-    }
 
 ?>
