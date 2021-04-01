@@ -20,6 +20,7 @@ fclose($file);
 $tbl = 'xml_alterego';
 $conn = mysqli_connect("localhost", 'root', 'Ascarisafari98', 'bot_pmsc');
 $sql = "
+truncate table $tbl;
 LOAD DATA LOCAL INFILE '$url'
 INTO TABLE $tbl
 FIELDS TERMINATED BY ','
