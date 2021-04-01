@@ -17,4 +17,21 @@ while (($line = fgetcsv($file)) !== FALSE) {
 }
 fclose($file);
 
+$tbl = 'xml_alterego';
+$conn = mysqli_connect("localhost", 'root', 'Ascarisafari98', 'bot_pmsc');
+$sql = "
+LOAD DATA LOCAL INFILE '$url'
+INTO TABLE $tbl
+FIELDS TERMINATED BY ','
+ENCLOSED BY '\"'
+LINES TERMINATED BY '\\n'
+IGNORE 1 ROWS;
+";
+
+$result = mysqli_query($conn, $sql);
+
+if(!$result){
+  die("Couldnt perform: " . mysqli_error($conn));
+}
+
 ?>
