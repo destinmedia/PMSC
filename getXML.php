@@ -15,10 +15,16 @@ while (($line = fgetcsv($file)) !== FALSE) {
   print_r($line);
   echo "</pre>";
 }
+
+$items = count(fgetcsv($file)) - 1;
+echo $items;
 fclose($file);
 
 $tbl = 'xml_alterego';
 $conn = mysqli_connect("localhost", 'root', 'Ascarisafari98', 'bot_pmsc');
+
+$sql = "TRUNCATE TABLE $tbl";
+
 $sql = "
 LOAD DATA LOCAL INFILE '$url'
 INTO TABLE $tbl
