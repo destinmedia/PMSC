@@ -24,7 +24,7 @@ foreach($urls as $x){
   $tbl = $x['tbl'];
   $url = $x['url'];
   $sql = "TRUNCATE TABLE $tbl";
-  echo $url . '<br>';
+
 
   $sql = "
   LOAD DATA LOCAL INFILE '$url'
@@ -40,6 +40,7 @@ foreach($urls as $x){
   if(!$result){
     die("Couldnt perform: " . mysqli_error($conn));
   }
+  echo $url . ' - COMPLETED<br>';
 }
 
 
