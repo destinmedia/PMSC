@@ -24,7 +24,7 @@ foreach($urls as $x){
   $tbl = $x['tbl'];
   $url = $x['url'];
   $sql = "TRUNCATE TABLE $tbl";
-  echo $url;
+  echo $url . '<br>';
 
   $sql = "
   LOAD DATA LOCAL INFILE '$url'
