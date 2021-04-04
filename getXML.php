@@ -21,7 +21,7 @@ while($row = mysqli_fetch_assoc($result)){
   $urls[] = $row;
 }
 foreach($urls as $x){
-  $tbl = $x['table'];
+  $tbl = $x['tbl'];
   $url = $x['url'];
   $sql = "TRUNCATE TABLE $tbl";
   echo $url;
