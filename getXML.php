@@ -8,16 +8,8 @@
 
 $url = "https://alterego-lingerie.com/wp-load.php?security_token=0f15c97507f1fc3c&export_id=113&action=get_data";
 echo $url;
-$file = fopen($url, 'r');
-while (($line = fgetcsv($file)) !== FALSE) {
-  //$line is an array of the csv elements
-  echo "<pre>";
-  print_r($line);
-  echo "</pre>";
-}
 
-$items = count(fgetcsv($file)) - 1;
-echo $items;
+
 fclose($file);
 
 $tbl = 'xml_alterego';
